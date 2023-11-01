@@ -1,0 +1,17 @@
+[2023-10-30T06:32:47.094+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: opensky_data_processing.fetch_opensky_data scheduled__2023-10-29T17:10:00+00:00 [queued]>
+[2023-10-30T06:32:47.147+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: opensky_data_processing.fetch_opensky_data scheduled__2023-10-29T17:10:00+00:00 [queued]>
+[2023-10-30T06:32:47.147+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 101
+[2023-10-30T06:32:47.665+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): fetch_opensky_data> on 2023-10-29 17:10:00+00:00
+[2023-10-30T06:32:47.689+0000] {standard_task_runner.py:57} INFO - Started process 146570 to run task
+[2023-10-30T06:32:47.734+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'opensky_data_processing', 'fetch_opensky_data', 'scheduled__2023-10-29T17:10:00+00:00', '--job-id', '1753', '--raw', '--subdir', 'DAGS_FOLDER/DataFetcher.py', '--cfg-path', '/tmp/tmpq8x07mrx']
+[2023-10-30T06:32:47.748+0000] {standard_task_runner.py:85} INFO - Job 1753: Subtask fetch_opensky_data
+[2023-10-30T06:32:48.203+0000] {task_command.py:416} INFO - Running <TaskInstance: opensky_data_processing.fetch_opensky_data scheduled__2023-10-29T17:10:00+00:00 [running]> on host ip-172-31-33-29.ec2.internal
+[2023-10-30T06:32:48.824+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='adayani' AIRFLOW_CTX_DAG_ID='opensky_data_processing' AIRFLOW_CTX_TASK_ID='fetch_opensky_data' AIRFLOW_CTX_EXECUTION_DATE='2023-10-29T17:10:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-10-29T17:10:00+00:00'
+[2023-10-30T06:33:34.165+0000] {local_task_job_runner.py:294} WARNING - State of this instance has been externally set to queued. Terminating instance.
+[2023-10-30T06:33:34.228+0000] {process_utils.py:131} INFO - Sending 15 to group 146570. PIDs of all processes in the group: [146570]
+[2023-10-30T06:33:34.229+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 146570
+[2023-10-30T06:33:34.229+0000] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-10-30T06:33:34.230+0000] {logging_mixin.py:151} INFO - Error: Task received SIGTERM signal
+[2023-10-30T06:33:34.231+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-10-30T06:33:34.366+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=opensky_data_processing, task_id=fetch_opensky_data, execution_date=20231029T171000, start_date=20231030T063247, end_date=20231030T063334
+[2023-10-30T06:33:34.514+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=146570, status='terminated', exitcode=0, started='06:32:47') (146570) terminated with exit code 0

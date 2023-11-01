@@ -1,0 +1,32 @@
+[2023-10-30T05:21:02.796+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: opensky_data_processing.opensky_producer scheduled__2023-10-26T03:00:00+00:00 [queued]>
+[2023-10-30T05:21:02.834+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: opensky_data_processing.opensky_producer scheduled__2023-10-26T03:00:00+00:00 [queued]>
+[2023-10-30T05:21:02.835+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 101
+[2023-10-30T05:21:02.927+0000] {taskinstance.py:1382} INFO - Executing <Task(ProduceToTopicOperator): opensky_producer> on 2023-10-26 03:00:00+00:00
+[2023-10-30T05:21:02.963+0000] {standard_task_runner.py:57} INFO - Started process 25208 to run task
+[2023-10-30T05:21:02.976+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'opensky_data_processing', 'opensky_producer', 'scheduled__2023-10-26T03:00:00+00:00', '--job-id', '705', '--raw', '--subdir', 'DAGS_FOLDER/DataFetcher.py', '--cfg-path', '/tmp/tmp9_jts17i']
+[2023-10-30T05:21:03.002+0000] {standard_task_runner.py:85} INFO - Job 705: Subtask opensky_producer
+[2023-10-30T05:21:03.379+0000] {task_command.py:416} INFO - Running <TaskInstance: opensky_data_processing.opensky_producer scheduled__2023-10-26T03:00:00+00:00 [running]> on host ip-172-31-33-29.ec2.internal
+[2023-10-30T05:21:04.054+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='adayani' AIRFLOW_CTX_DAG_ID='opensky_data_processing' AIRFLOW_CTX_TASK_ID='opensky_producer' AIRFLOW_CTX_EXECUTION_DATE='2023-10-26T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-10-26T03:00:00+00:00'
+[2023-10-30T05:21:04.159+0000] {base.py:73} INFO - Using connection ID 'kafka_default' for task execution.
+[2023-10-30T05:21:04.187+0000] {produce.py:41} INFO - Producer <cimpl.Producer object at 0x7f25b04665c0>
+[2023-10-30T05:21:04.189+0000] {logging_mixin.py:151} INFO - produced the data None
+[2023-10-30T05:26:04.197+0000] {produce.py:33} ERROR - Failed to deliver message: KafkaError{code=_MSG_TIMED_OUT,val=-192,str="Local: Message timed out"}
+[2023-10-30T05:26:04.229+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=opensky_data_processing, task_id=opensky_producer, execution_date=20231026T030000, start_date=20231030T052102, end_date=20231030T052604
+[2023-10-30T05:26:04.259+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-10-30T05:26:04.291+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-31T03:58:27.575+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: opensky_data_processing.opensky_producer scheduled__2023-10-26T03:00:00+00:00 [queued]>
+[2023-10-31T03:58:27.682+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: opensky_data_processing.opensky_producer scheduled__2023-10-26T03:00:00+00:00 [queued]>
+[2023-10-31T03:58:27.683+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 101
+[2023-10-31T03:58:27.973+0000] {taskinstance.py:1382} INFO - Executing <Task(ProduceToTopicOperator): opensky_producer> on 2023-10-26 03:00:00+00:00
+[2023-10-31T03:58:28.025+0000] {standard_task_runner.py:57} INFO - Started process 243340 to run task
+[2023-10-31T03:58:28.049+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'opensky_data_processing', 'opensky_producer', 'scheduled__2023-10-26T03:00:00+00:00', '--job-id', '2118', '--raw', '--subdir', 'DAGS_FOLDER/DataFetcher.py', '--cfg-path', '/tmp/tmp577addbs']
+[2023-10-31T03:58:28.118+0000] {standard_task_runner.py:85} INFO - Job 2118: Subtask opensky_producer
+[2023-10-31T03:58:28.744+0000] {task_command.py:416} INFO - Running <TaskInstance: opensky_data_processing.opensky_producer scheduled__2023-10-26T03:00:00+00:00 [running]> on host ip-172-31-33-29.ec2.internal
+[2023-10-31T03:58:29.839+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='adayani' AIRFLOW_CTX_DAG_ID='opensky_data_processing' AIRFLOW_CTX_TASK_ID='opensky_producer' AIRFLOW_CTX_EXECUTION_DATE='2023-10-26T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-10-26T03:00:00+00:00'
+[2023-10-31T03:58:29.960+0000] {base.py:73} INFO - Using connection ID 'kafka_default' for task execution.
+[2023-10-31T03:58:29.995+0000] {produce.py:41} INFO - Producer <cimpl.Producer object at 0x7f25b04665c0>
+[2023-10-31T03:58:29.998+0000] {logging_mixin.py:151} INFO - produced the data ds
+[2023-10-31T03:58:30.997+0000] {produce.py:35} INFO - Produced record to topic opensky_stream partition [0] @ offset 608
+[2023-10-31T03:58:31.102+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=opensky_data_processing, task_id=opensky_producer, execution_date=20231026T030000, start_date=20231031T035827, end_date=20231031T035831
+[2023-10-31T03:58:31.296+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-10-31T03:58:32.063+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,120 @@
+[2023-10-30T05:49:37.060+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: opensky_data_processing.fetch_opensky_data scheduled__2023-10-26T22:20:00+00:00 [queued]>
+[2023-10-30T05:49:37.145+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: opensky_data_processing.fetch_opensky_data scheduled__2023-10-26T22:20:00+00:00 [queued]>
+[2023-10-30T05:49:37.151+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 101
+[2023-10-30T05:49:37.223+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): fetch_opensky_data> on 2023-10-26 22:20:00+00:00
+[2023-10-30T05:49:37.242+0000] {standard_task_runner.py:57} INFO - Started process 99911 to run task
+[2023-10-30T05:49:37.278+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'opensky_data_processing', 'fetch_opensky_data', 'scheduled__2023-10-26T22:20:00+00:00', '--job-id', '910', '--raw', '--subdir', 'DAGS_FOLDER/DataFetcher.py', '--cfg-path', '/tmp/tmpluwj9bbk']
+[2023-10-30T05:49:37.287+0000] {standard_task_runner.py:85} INFO - Job 910: Subtask fetch_opensky_data
+[2023-10-30T05:49:37.741+0000] {task_command.py:416} INFO - Running <TaskInstance: opensky_data_processing.fetch_opensky_data scheduled__2023-10-26T22:20:00+00:00 [running]> on host ip-172-31-33-29.ec2.internal
+[2023-10-30T05:49:38.459+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='adayani' AIRFLOW_CTX_DAG_ID='opensky_data_processing' AIRFLOW_CTX_TASK_ID='fetch_opensky_data' AIRFLOW_CTX_EXECUTION_DATE='2023-10-26T22:20:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-10-26T22:20:00+00:00'
+[2023-10-30T05:57:52.666+0000] {logging_mixin.py:151} INFO - Error: ('Connection broken: IncompleteRead(7707 bytes read, 2533 more expected)', IncompleteRead(7707 bytes read, 2533 more expected))
+[2023-10-30T05:57:52.673+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-10-30T05:50:50.180+0000] {job.py:219} ERROR - Job heartbeat got an exception
+Traceback (most recent call last):
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "my-magiclips-main.c3yqyssywtnq.us-east-1.rds.amazonaws.com" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/development/lib/python3.10/site-packages/airflow/jobs/job.py", line 215, in heartbeat
+    heartbeat_callback(session)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/airflow/jobs/local_task_job_runner.py", line 246, in heartbeat_callback
+    self.task_instance.refresh_from_db()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 866, in refresh_from_db
+    ti = qry.one_or_none()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2850, in one_or_none
+    return self._iter().one_or_none()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2916, in _iter
+    result = self.session.execute(
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/future/engine.py", line 406, in connect
+    return super(Engine, self).connect()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/development/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "my-magiclips-main.c3yqyssywtnq.us-east-1.rds.amazonaws.com" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2023-10-30T05:57:52.933+0000] {local_task_job_runner.py:205} ERROR - Heartbeat time limit exceeded!
+[2023-10-30T05:57:53.328+0000] {process_utils.py:131} INFO - Sending 15 to group 99911. PIDs of all processes in the group: [99911]
+[2023-10-30T05:57:53.329+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 99911
+[2023-10-30T05:57:53.336+0000] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-10-30T05:57:53.893+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 910 for task fetch_opensky_data ((psycopg2.OperationalError) could not translate host name "my-magiclips-main.c3yqyssywtnq.us-east-1.rds.amazonaws.com" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8); 99911)
+[2023-10-30T05:57:54.001+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=99911, status='terminated', exitcode=1, started='05:49:36') (99911) terminated with exit code 1
