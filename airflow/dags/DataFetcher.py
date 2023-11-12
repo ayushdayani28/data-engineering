@@ -10,6 +10,7 @@ from airflow.providers.apache.kafka.operators.consume import ConsumeFromTopicOpe
 # from airflow.providers.google.cloud.operators.xcom import XComPushOperator
 from airflow.models import Variable
 import random
+import string
 # from aux import to_dataframe#, consumer_function
 
 username = Variable.get("OPENSKY_USERNAME")
@@ -34,8 +35,17 @@ def fetch_data():
         print("Error:", e)
         return None
 
+
 def fd():
-    return 'ds'
+    def generate_random_string(length):
+        # Define the characters from which the random string will be generated
+        characters = string.ascii_letters + string.digits  # You can customize this further
+
+        # Generate a random string of the specified length
+        random_string = ''.join(random.choice(characters) for _ in range(length))
+
+        return random_string
+    return generate_random_string(10)
 
 def save_to_parquet(data):
     if data:
@@ -59,7 +69,7 @@ with DAG(
     default_args=default_args,
     description="DAG to fetch, process, and save data from OpenSky",
     start_date=datetime(2023, 10, 26),
-    schedule_interval=timedelta(minutes=0.1),
+    schedule_interval=timedelta(minutes=1),
     catchup=False
 ) as dag:
     start_task = DummyOperator(task_id="start_task")
